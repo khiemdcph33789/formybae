@@ -13,11 +13,37 @@ html {
     height: 100vh;
     background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(161,196,94,1) 0%, rgba(1,133,201,1) 100%);
     text-align: center;
-    align-content: center;
+    padding: 12rem 6rem;
 }
 
 h2 {
-    /* line-height: 100vh; */
     font-size: 5rem;
     font-weight: 900;
+}
+.container .img-block  {
+    min-height: 25rem;
+}
+
+.container .img-block .img-item{
+    border-right: .15rem solid #74bea2;
+}
+.container .img-block .img-item img{
+    width: 35rem;
+    object-fit: contain;
+}
+
+.container .img-block .img-desc {
+    text-align: start;
+    font-size: 3rem;
+    font-weight: 500;
+}
+.row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.col {
+    flex-basis: 50%;
+    width: 50%;
 }
