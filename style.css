@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: "Edu AU VIC WA NT Hand", cursive;
+}
+.container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(161,196,94,1) 0%, rgba(1,133,201,1) 100%);
+    text-align: center;
+    align-content: center;
+}
+
+h2 {
+    /* line-height: 100vh; */
+    font-size: 5rem;
+    font-weight: 900;
+}
