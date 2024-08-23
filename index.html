@@ -8,25 +8,102 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Inter&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Inter&family=Pacifico&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>For my bae</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="row img-block">
-            <div class="col img-item">
-                <img src="./assets/1.jfif" alt="" >
-            </div>
+        <section class="title">
+            <h1 class="main-title">
+                Happy birthday <br>
+                Xuânnnn! <br>(my bae he)
 
-            <div class="col">
-                <p class="img-desc">Này là lần đâu chụp photo booth nè. Cuống cuồng k kịp tạo dáng =))</p>
+            </h1>
+
+        </section>
+
+        <section class="gift-container">
+            <div class="gift-wrapper">
+                <div class="gift">
+                    <input type="checkbox" id="click">
+                    <label for="click" class="click"></label>
+                    <div class="wishes">
+                        <img src="./assets/Capture.PNG" alt="">
+                    </div>
+                </div>
             </div>
-        </div>
-        <div>
-            <h2>Hello my bae, love you so muchhh moaww tró suannnn</h2>
+        </section>
+
+   
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="overlay"></div>
+        <div class="modal-content">
+            <h4>Dear my suânnn hì hì</h4>
+            <div class="row">
+                <div class="col">
+                    <img src="./assets/Remove-bg.ai_1723703965949.png" alt="">
+                </div>
+                <div class="col" style="width: 80%; flex-basis: 80%;">
+                    <p>
+                        Hihi, chúc pé iu sinh nhật vui vẻeeee nhé. Hmmm thì thiệp tay chúc gòi ở đây chúc típppp nè. <br> <br>
+                        Suy nghĩ mãi mới chọn tặng pé món quà nho nhỏ này thật là khó lựa chọn mà thấy pé thít skin 
+                        lux thủy thủ mặc kệ quá nên a đã tặng pé ❤❤❤   <br> <br>
+                        Pé cũm thít hoa, thít skin mà a tặng đc có 1 thứ huhu sang năm có tiền khim sẽ tặng cả 2 lunn kekekekekekek 😥😥😥.
+                        <br>
+                        (Khum seoooo đêy cũm cóa hoa nè - màu xanhhh lunnnn bên trái ý) <br> <br>
+                        Cảm ơn em vì vẫn ở bên anh iuuu iuuu - dù hiện tại anh chả có gì trong tay cả (ngoại trừ em) 😁.
+                    </p>    
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
+
+    <script>
+        const boxgift = document.getElementsByClassName("gift")[0];
+        const inputCheckBox = document.getElementById("click");
+        const labelGift = document.getElementsByClassName("click")[0];
+        const modalElement = document.getElementById("modal");
+        const overLay = document.getElementsByClassName("overlay")[0];
+        let isChecked = false;
+
+        boxgift.addEventListener('click',() => {
+            inputCheckBox.checked = !isChecked;
+
+            setTimeout(() => {
+                modalElement.classList.add("show")
+            }, 8000)
+            isCheck
+            ed = !isChecked;
+        });
+        labelGift.addEventListener('click',() => {
+            inputCheckBox.checked = !isChecked;
+            setTimeout(() => {
+                modalElement.classList.add("show")
+            }, 8000)
+            isChecked = !isChecked;
+        });
+
+        overLay.addEventListener('click',() => {
+            modalElement.classList.remove("show")
+            inputCheckBox.checked = false;
+            isChecked = false;
+        })
+
+
+
+    </script>
+   
 </body>
 
 </html>

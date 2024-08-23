@@ -8,28 +8,173 @@ html {
     font-size: 62.5%;
     font-family: "Edu AU VIC WA NT Hand", cursive;
 }
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+section {
+    height: 100vh;
+}
+
 .container {
     width: 100%;
-    height: 100vh;
-    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(161,196,94,1) 0%, rgba(1,133,201,1) 100%);
+    min-height: 100vh;
+    background: linear-gradient(45deg, rgba(2, 0, 36, 1) 0%, rgba(161, 196, 94, 1) 0%, rgba(1, 133, 201, 1) 100%);
     text-align: center;
     padding: 12rem 6rem;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
 }
 
 h2 {
     font-size: 5rem;
     font-weight: 900;
 }
-.container .img-block  {
-    min-height: 25rem;
+
+.container .title h1 {
+    margin-bottom: 10rem;
+    font-family: "Pacifico", cursive;
+    font-weight: 500;
+    font-size: 15rem;
+    position: relative;
+    animation: animation-title 3s ease-in-out infinite;
+    text-shadow: -1px 1px 0px #aaffd8;
 }
 
-.container .img-block .img-item{
-    border-right: .15rem solid #74bea2;
+.container .gift-container {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
-.container .img-block .img-item img{
+
+.container .gift-wrapper {
+    position: relative;
+
+}
+
+.container .gift-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 57rem;
+    height: 6rem;
+    background-color: rgba(0, 0, 0, .4);
+    border-radius: 50%;
+    top: 17rem;
+    left: -1rem;
+}
+
+.container .gift-wrapper .gift {
+    position: relative;
+    width: 55rem;
+    height: 20rem;
+    background-color: #e9c46a;
+
+}
+
+
+.container .gift-wrapper .gift::before {
+    content: '';
+    position: absolute;
+    width: 2.5rem;
+    height: 20rem;
+    background-color: #e76f51;
+    left: 26.2rem;
+}
+
+.container .gift-wrapper .gift::after {
+    content: '';
+    position: absolute;
+    box-shadow: inset 0 10px rgba(0, 0, 0, .3);
+    width: 55rem;
+    height: 10rem;
+    left: 0rem;
+
+}
+
+#click {
+    display: none;
+}
+
+.click {
+    position: absolute;
+    background-color: #e9c46a;
+    width: 57rem;
+    height: 4rem;
+    top: -4rem;
+    left: -1rem;
+    transform-origin: bottom left;
+    transition: 0.3;
+    cursor: pointer;
+    transition: all 1s;
+}
+
+.click::before {
+    position: absolute;
+    content: '';
+    width: 2.5rem;
+    height: 4rem;
+    background-color: #e76f51;
+    left: 27.2rem;
+}
+
+.click::after {
+    position: absolute;
+    content: '';
+    width: .5rem;
+    height: 0;
+    background-color: #e76f51;
+    left: 7.2rem;
+    border-bottom: 2rem solid #e76f51;
+    border-top: 2rem solid #e76f51;
+    border-left: 0rem solid transparent;
+    border-right: 2rem solid transparent;
+    transform: rotate(-90deg);
+    left: 27.2rem;
+    top: -3.25rem;
+}
+
+#click:checked+.click {
+    transform: rotate(-110deg) scale(0.85);
+}
+
+.wishes {
+    transition: transform 1s, opacity .3s;
+    position: absolute;
+    opacity: 0;
+    margin-left: 1rem;
+}
+
+#click:checked~.wishes {
+    transform: translateY(-15rem);
+    opacity: 1;
+
+}
+
+
+
+.container .img-block {
+    min-height: 50vh;
+}
+
+.container .img-block img {
     width: 35rem;
     object-fit: contain;
+    padding-right: 5rem;
+    border-right: .15rem solid #74bea2;
+
 }
 
 .container .img-block .img-desc {
@@ -37,13 +182,204 @@ h2 {
     font-size: 3rem;
     font-weight: 500;
 }
+
 .row {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .col {
     flex-basis: 50%;
     width: 50%;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+ 
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .4);
+}
+.modal-content {
+    font-family: "Dancing Script", cursive;
+    width: 90rem;
+    max-width: calc(100vw - 1rem);
+    max-height: calc(100vh - 15rem);
+    background-color: #ffffe2;
+    border-radius: 3rem;
+    transform: scaleY(0); 
+    opacity: 0; 
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out; 
+    padding: 3rem 2rem;
+    overflow-y: scroll;
+}
+.modal.show {
+    display: flex; 
+    visibility: visible;
+}
+
+.show .modal-content {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.modal-content h4 {
+    text-align: center;
+    font-weight: 700;
+    font-size: 7rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.modal-content img{
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+}
+.modal-content p{
+    font-size: 2.6rem;
+}
+@keyframes animation-title {
+    0% {
+        transform: rotate(1deg);
+    }
+
+    25% {
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        transform: rotate(1deg);
+    }
+
+    75% {
+        transform: rotate(-1deg);
+    }
+
+    100% {
+        transform: rotate(1deg);
+    }
+}
+
+
+
+
+/* ----------------------------- */
+@media (max-width: 740px) {
+    section {
+        /* height: 70vh; */
+        align-content: center;
+
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .container .title h1 {
+        font-size: 5rem;
+    }
+
+
+    .container .gift-wrapper::before {
+        width: 27rem;
+        height: 6rem;
+    }
+
+    .container .gift-wrapper .gift {
+        width: 25rem;
+        height: 20rem;
+
+    }
+
+
+    .container .gift-wrapper .gift::before {
+
+        width: 2.5rem;
+        height: 20rem;
+        left: 11.5rem;
+    }
+
+    .container .gift-wrapper .gift::after {
+
+        width: 25rem;
+        height: 10rem;
+
+    }
+
+
+    .click {
+
+        width: 27rem;
+        height: 4rem;
+
+    }
+
+    .click::before {
+        left: 12.5rem;
+
+    }
+
+    .click::after {
+        left: 12.5rem;
+
+    }
+
+    #click:checked~.wishes {
+        transform: translateY(-7rem);
+    }
+
+    .wishes img {
+        width: 23rem;
+    }
+
+
+    .container .img-block img {
+        width: 35rem;
+        object-fit: contain;
+        padding: 0 2rem;
+        border-right: none;
+
+    }
+
+
+    .container .img-block .img-desc {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+
+    .modal-content .row{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-content h4 {
+        font-size: 5rem;
+    }
+    
+    .modal-content .col{
+        width: 100% !important;
+        flex-basis: 100% !important;
+    }
+    .modal-content p{
+        font-size: 2rem;
+    }
+    
 }
